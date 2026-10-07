@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat /Users/arqam/Sites/valet/4-twilio-fastapi/.env.example *)",
+      "Bash(node --check controllers/toebankClient.js)",
+      "Bash(node --check controllers/twilioController.js)",
+      "Bash(pnpm db:generate)",
+      "Bash(pnpm exec *)",
+      "Bash(node -e ' *)"
+    ],
+    "additionalDirectories": [
+      "/Users/arqam/Sites/valet/4-twilio-fastapi"
+    ]
+  }
+}
