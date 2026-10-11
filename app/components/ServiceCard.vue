@@ -2,7 +2,7 @@
 defineProps<{
   service: {
     slug: string; title: string; summary: string; icon: string; coverImage: string | null
-    turnaround: string | null; categoryName?: string | null
+    categoryName?: string | null
   }
   index?: number
 }>()
@@ -22,8 +22,7 @@ defineProps<{
         <NuxtLink :to="`/services/${service.slug}`" class="after:absolute after:inset-0 after:content-['']">{{ service.title }}</NuxtLink>
       </h3>
       <p class="mt-2 flex-1 text-muted">{{ service.summary }}</p>
-      <div class="mt-5 flex items-center justify-between text-sm">
-        <span class="inline-flex items-center gap-1.5 font-semibold text-ink"><AppIcon name="clock" :size="15" class="text-muted" /> {{ service.turnaround || 'Custom timeline' }}</span>
+      <div class="mt-5 flex items-center justify-end text-sm">
         <span class="inline-flex items-center gap-1 font-semibold text-accent">Learn more <AppIcon name="arrow-right" :size="16" class="transition group-hover:translate-x-1" /></span>
       </div>
     </div>

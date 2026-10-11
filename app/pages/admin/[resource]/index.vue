@@ -63,7 +63,7 @@ function cell(row: Record<string, unknown>, key: string) {
     </div>
 
     <div class="card overflow-hidden">
-      <div class="overflow-x-auto">
+      <div class="relative overflow-x-auto">
         <table class="w-full min-w-[40rem] text-left text-sm">
           <thead class="border-b border-line bg-surface text-xs font-semibold uppercase tracking-wider text-muted">
             <tr><th v-for="c in config.columns" :key="c.key" class="px-4 py-3" scope="col">{{ c.label }}</th><th class="px-4 py-3 text-right" scope="col"><span class="sr-only">Actions</span></th></tr>

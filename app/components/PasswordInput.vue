@@ -27,7 +27,7 @@ const visible = ref(false)
     <button
       type="button"
       class="absolute right-1.5 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full text-muted transition hover:bg-accent/10 hover:text-accent"
-      :aria-label="visible ? 'Hide password' : 'Show password'"
+      :aria-label="visible ? 'Hide characters' : 'Show characters'"
       :aria-pressed="visible"
       @click="visible = !visible"
     >

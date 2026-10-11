@@ -33,7 +33,7 @@ const channels = computed(() => [
                 <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-dark"><AppIcon :name="c.icon" /></span>
                 <div class="min-w-0">
                   <p class="text-sm text-muted">{{ c.label }}</p>
-                  <a v-if="c.href" :href="c.href" class="break-all font-semibold text-ink transition hover:text-accent" :target="c.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer">{{ c.value }}</a>
+                  <a v-if="c.href" :href="c.href" class="text-[0.9rem] font-semibold text-ink transition [overflow-wrap:anywhere] hover:text-accent sm:text-base" :target="c.href.startsWith('http') ? '_blank' : undefined" rel="noopener noreferrer">{{ c.value }}</a>
                   <p v-else class="font-semibold text-ink">{{ c.value }}</p>
                 </div>
               </li>

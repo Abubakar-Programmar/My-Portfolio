@@ -14,21 +14,21 @@ function toTop() {
 
 <template>
   <footer class="border-t border-line bg-paper">
-    <div class="container-x grid gap-12 py-14 md:grid-cols-12">
-      <div class="md:col-span-4">
+    <div class="container-x grid gap-12 py-14 sm:grid-cols-2 lg:grid-cols-12">
+      <div class="sm:col-span-2 lg:col-span-4">
         <BrandMark />
         <p class="mt-4 max-w-sm text-muted">{{ site.profile.shortBio }}</p>
         <div class="mt-6"><SocialLinks :items="site.socials.items" /></div>
       </div>
 
-      <nav class="md:col-span-2" aria-label="Quick links">
+      <nav class="lg:col-span-2" aria-label="Quick links">
         <h2 class="text-sm font-semibold uppercase tracking-wider text-ink">Explore</h2>
         <ul class="mt-4 space-y-2.5">
           <li v-for="l in quick" :key="l.to"><NuxtLink :to="l.to" class="text-muted transition hover:text-accent">{{ l.label }}</NuxtLink></li>
         </ul>
       </nav>
 
-      <nav class="md:col-span-2" aria-label="Legal">
+      <nav class="lg:col-span-2" aria-label="Legal">
         <h2 class="text-sm font-semibold uppercase tracking-wider text-ink">More</h2>
         <ul class="mt-4 space-y-2.5">
           <li v-for="l in legal" :key="l.to"><NuxtLink :to="l.to" class="text-muted transition hover:text-accent">{{ l.label }}</NuxtLink></li>
@@ -36,10 +36,10 @@ function toTop() {
         </ul>
       </nav>
 
-      <div class="md:col-span-4">
+      <div class="min-w-0 sm:col-span-2 lg:col-span-4">
         <h2 class="text-sm font-semibold uppercase tracking-wider text-ink">Get in touch</h2>
         <ul class="mt-4 space-y-2.5 text-muted">
-          <li v-if="site.contact.email"><a :href="`mailto:${site.contact.email}`" class="inline-flex items-start gap-2 break-words text-[0.95rem] transition hover:text-accent"><AppIcon name="mail" :size="16" class="mt-1" /> {{ site.contact.email }}</a></li>
+          <li v-if="site.contact.email"><a :href="`mailto:${site.contact.email}`" class="inline-flex max-w-full items-start gap-2 text-[0.95rem] transition hover:text-accent"><AppIcon name="mail" :size="16" class="mt-1" /> <span class="min-w-0 [overflow-wrap:anywhere]">{{ site.contact.email }}</span></a></li>
           <li v-if="site.contact.phone"><a :href="`tel:${site.contact.phone.replace(/\s/g, '')}`" class="inline-flex items-center gap-2 transition hover:text-accent"><AppIcon name="phone" :size="16" /> {{ site.contact.phone }}</a></li>
           <li v-if="site.contact.location" class="inline-flex items-center gap-2"><AppIcon name="map-pin" :size="16" /> {{ site.contact.location }}</li>
         </ul>

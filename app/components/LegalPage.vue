@@ -8,7 +8,7 @@ defineProps<{ title: string; updated: string }>()
       <BreadcrumbNav :items="[{ name: title }]" />
       <h1 class="h1 mt-5 !text-4xl sm:!text-5xl">{{ title }}</h1>
       <p class="mt-3 text-muted">Last updated {{ updated }}</p>
-      <div class="prose-content mt-10"><slot /></div>
+      <div class="prose-content mt-10 [overflow-wrap:anywhere]"><slot /></div>
     </div>
   </section>
 </template>

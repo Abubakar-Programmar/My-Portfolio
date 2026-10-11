@@ -24,6 +24,8 @@
   }
   ::selection { @apply bg-accent text-white; }
   img, svg, video { max-width: 100%; }
+  /* Grid items may shrink below their content width, so long text or inputs never widen the page on phones. */
+  :where(#admin-main .grid) > * { min-width: 0; }
 }
 
 @layer components {
