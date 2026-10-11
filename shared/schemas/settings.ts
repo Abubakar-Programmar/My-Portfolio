@@ -125,9 +125,9 @@ export const defaultSettings: SiteSettings = {
     projectsCompleted: 15,
     happyClients: 10,
     ctaTitle: 'Have a project in mind?',
-    ctaText: 'Tell me about your goals and I will reply within one business day with next steps.'
+    ctaText: 'Tell me about your goals and I will reply within five working hours with next steps.'
   },
-  contact: { email: '', phone: '', whatsapp: '', location: '', bookingUrl: '' },
+  contact: { email: 'abubakarkhanzzz321321@gmail.com', phone: '+92 315 9761378', whatsapp: '923159761378', location: '', bookingUrl: '' },
   socials: { items: [] },
   seo: {
     titleTemplate: '%s | Abubakar Developer',
@@ -136,7 +136,7 @@ export const defaultSettings: SiteSettings = {
     keywords: 'web developer, technical SEO, Nuxt, Vue, freelance developer'
   },
   notifications: {
-    email: '',
+    email: 'abubakarkhanzzz321321@gmail.com',
     onMessage: true,
     onLoginAlert: true,
     onSubscriber: true,
@@ -144,7 +144,7 @@ export const defaultSettings: SiteSettings = {
     weeklySummary: true,
     autoReply: true,
     autoReplyMessage:
-      'Thanks for getting in touch. I have received your message and will reply personally within one business day.',
+      'Thank you for reaching out. We have received your request and will respond within the next five working hours.',
     subscribersEnabled: true
   }
 }

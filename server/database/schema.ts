@@ -84,6 +84,8 @@ export const passwordResetToken = portfolio.table(
     tokenHash: text('token_hash').notNull().unique(),
     expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
     usedAt: timestamp('used_at', { withTimezone: true }),
+    /** Wrong 6-digit codes entered against this row; the row is burned after too many. */
+    attempts: integer('attempts').notNull().default(0),
     createdAt: createdAt()
   },
   t => [index('password_reset_user_idx').on(t.userId)]

@@ -14,6 +14,10 @@ const sending = ref(false)
 const sent = ref(false)
 const sentTo = ref('')
 
+// The confirmation banner fades away on its own after a few seconds.
+const CONFIRMATION_MS = 3000
+const { start: hideConfirmation, stop: cancelHideConfirmation } = useTimeoutFn(() => (sent.value = false), CONFIRMATION_MS, { immediate: false })
+
 onMounted(() => (startedAt.value = Date.now()))
 
 // "Request a quote" links arrive as /contact?service=<slug>; pre-select that service.
@@ -47,7 +51,9 @@ async function submit() {
     sentTo.value = form.email
     reset()
     sent.value = true
-    toast.success('Message sent — thank you!')
+    cancelHideConfirmation()
+    hideConfirmation()
+    toast.show({ message: 'Message sent — thank you!', duration: CONFIRMATION_MS })
   } catch (err) {
     errors.value = fieldErrors(err)
     toast.error(errorMessage(err))
@@ -59,20 +65,21 @@ async function submit() {
 function reset() {
   Object.assign(form, { name: '', email: '', serviceId: '', customService: '', budget: '', message: '', website: '' })
   startedAt.value = Date.now()
-  sent.value = false
 }
 </script>
 
 <template>
   <div class="card relative overflow-hidden p-6 shadow-soft sm:p-8">
     <div>
-      <div v-if="sent" class="mb-6 flex items-start gap-3 rounded-xl bg-green-50 p-4" role="status">
-        <AppIcon name="check-circle" :size="24" class="mt-0.5 shrink-0 text-success" />
-        <div>
-          <p class="font-semibold text-ink">Message sent — thank you!</p>
-          <p class="text-sm text-muted">I will reply to <strong class="text-ink">{{ sentTo }}</strong> within one business day. The form is ready if you want to send another.</p>
+      <Transition name="fade">
+        <div v-if="sent" class="mb-6 flex items-start gap-3 rounded-xl bg-green-50 p-4" role="status">
+          <AppIcon name="check-circle" :size="24" class="mt-0.5 shrink-0 text-success" />
+          <div>
+            <p class="font-semibold text-ink">Message sent — thank you!</p>
+            <p class="text-sm text-muted">We have received your request and will respond to <strong class="break-all text-ink">{{ sentTo }}</strong> within the next five working hours.</p>
+          </div>
         </div>
-      </div>
+      </Transition>
 
       <form novalidate class="space-y-5" aria-label="Contact form" @submit.prevent="submit">
         <div class="grid gap-5 sm:grid-cols-2">

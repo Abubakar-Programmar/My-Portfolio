@@ -52,7 +52,6 @@ const gallery = computed(() => (s.value.images.length ? s.value.images : [s.valu
           </div>
           <dl class="hero-in mt-10 flex flex-wrap gap-x-10 gap-y-4" style="--i: 5">
             <div v-if="s.turnaround"><dt class="flex items-center gap-1.5 text-sm text-muted"><AppIcon name="clock" :size="15" /> Turnaround</dt><dd class="mt-0.5 font-semibold text-ink">{{ s.turnaround }}</dd></div>
-            <div v-if="s.showPricing && s.startingPrice"><dt class="flex items-center gap-1.5 text-sm text-muted"><AppIcon name="tag" :size="15" /> Starting from</dt><dd class="mt-0.5 font-semibold text-ink">{{ s.startingPrice }}</dd></div>
           </dl>
         </div>
         <div class="hero-in lg:col-span-5" style="--i: 2">
@@ -102,22 +101,6 @@ const gallery = computed(() => (s.value.images.length ? s.value.images : [s.valu
           </div>
         </section>
 
-        <section v-if="s.showPricing && s.packages.length" aria-labelledby="pricing-h">
-          <h2 id="pricing-h" class="h2 text-2xl sm:text-3xl">Packages & pricing</h2>
-          <div class="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            <div v-for="(p, i) in s.packages" :key="p.name" v-reveal="i * 70" class="card flex flex-col p-6" :class="i === 1 && s.packages.length > 2 ? 'border-accent shadow-glow' : ''">
-              <h3 class="text-lg">{{ p.name }}</h3>
-              <p class="mt-2 font-display text-3xl font-extrabold text-ink">{{ p.price }}</p>
-              <p class="mt-2 text-sm text-muted">{{ p.description }}</p>
-              <ul class="mt-5 flex-1 space-y-2.5 text-sm">
-                <li v-for="f in p.features" :key="f" class="flex gap-2"><AppIcon name="check" :size="16" class="mt-0.5 text-success" /> {{ f }}</li>
-              </ul>
-              <NuxtLink :to="quoteLink" class="btn btn-secondary mt-6 w-full">Choose {{ p.name }}</NuxtLink>
-            </div>
-          </div>
-          <p class="mt-4 text-sm text-muted">Prices are starting points. Every project gets a fixed written quote after a short call.</p>
-        </section>
-
         <section v-if="s.faqs.length" aria-labelledby="faq-h">
           <h2 id="faq-h" class="h2 text-2xl sm:text-3xl">Frequently asked questions</h2>
           <div class="mt-6"><FaqAccordion :items="s.faqs" /></div>
@@ -128,7 +111,7 @@ const gallery = computed(() => (s.value.images.length ? s.value.images : [s.valu
         <div class="space-y-6 lg:sticky lg:top-28">
           <div class="card p-6 shadow-soft">
             <h2 class="text-xl">Ready to get started?</h2>
-            <p class="mt-2 text-muted">Tell me about your project and get a clear quote within one business day.</p>
+            <p class="mt-2 text-muted">Tell me about your project and get a clear quote and reply within five working hours.</p>
             <NuxtLink :to="quoteLink" class="btn btn-primary mt-5 w-full">Request a quote</NuxtLink>
           </div>
           <div v-if="s.tools.length" class="card p-6">

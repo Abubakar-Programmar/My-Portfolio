@@ -31,14 +31,14 @@ const active = computed(() => (hover.value === null ? null : { point: points.val
     <div class="relative">
       <svg :viewBox="`0 0 ${W} ${H}`" class="h-44 w-full touch-none" preserveAspectRatio="none" role="img" :aria-label="`${label} over time`" @pointermove="onMove" @pointerleave="hover = null">
         <defs>
-          <linearGradient :id="`grad-${label}`" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B3DF5" stop-opacity=".22" /><stop offset="1" stop-color="#5B3DF5" stop-opacity="0" /></linearGradient>
+          <linearGradient :id="`grad-${label}`" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6B0F1A" stop-opacity=".22" /><stop offset="1" stop-color="#6B0F1A" stop-opacity="0" /></linearGradient>
         </defs>
         <line v-for="g in 3" :key="g" x1="0" :x2="W" :y1="(H / 4) * g" :y2="(H / 4) * g" stroke="#E7E8EE" stroke-width="1" vector-effect="non-scaling-stroke" />
         <path :d="area" :fill="`url(#grad-${label})`" />
-        <path :d="line" fill="none" stroke="#5B3DF5" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+        <path :d="line" fill="none" stroke="#6B0F1A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
         <line v-if="active" :x1="active.point.x" :x2="active.point.x" y1="0" :y2="H" stroke="#A78BFA" stroke-width="1" stroke-dasharray="3 3" vector-effect="non-scaling-stroke" />
       </svg>
-      <div v-if="active" class="pointer-events-none absolute top-0 -translate-x-1/2 rounded-lg bg-ink px-2.5 py-1.5 text-xs text-white shadow-lift" :style="{ left: `${(active.point.x / W) * 100}%` }">
+      <div v-if="active" class="pointer-events-none absolute top-0 -translate-x-1/2 rounded-lg bg-accent-dark px-2.5 py-1.5 text-xs text-white shadow-lift" :style="{ left: `${(active.point.x / W) * 100}%` }">
         <span class="font-bold">{{ active.data.value }}</span> · {{ formatDate(active.data.day, { month: 'short', day: 'numeric' }) }}
       </div>
     </div>

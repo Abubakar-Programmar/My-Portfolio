@@ -33,8 +33,6 @@ export const serviceCardColumns = {
   summary: service.summary,
   icon: service.icon,
   coverImage: service.coverImage,
-  showPricing: service.showPricing,
-  startingPrice: service.startingPrice,
   turnaround: service.turnaround,
   featured: service.featured,
   categoryId: service.categoryId,

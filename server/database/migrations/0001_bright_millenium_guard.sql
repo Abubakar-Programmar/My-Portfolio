@@ -1,0 +1,1 @@
+ALTER TABLE "portfolio"."password_reset_token" ADD COLUMN "attempts" integer DEFAULT 0 NOT NULL;

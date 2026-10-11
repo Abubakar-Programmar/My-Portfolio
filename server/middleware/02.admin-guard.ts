@@ -3,6 +3,7 @@
 const PUBLIC_ADMIN_ROUTES = new Set([
   '/api/admin/login',
   '/api/admin/forgot-password',
+  '/api/admin/verify-otp',
   '/api/admin/reset-password'
 ])
 

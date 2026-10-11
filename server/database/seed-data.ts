@@ -5,7 +5,8 @@ import type { FaqItem, PricingPackage, ProcessStep, ResultMetric } from './schem
 export const serviceCategories = [
   { name: 'Development', slug: 'development', sortOrder: 1 },
   { name: 'SEO & Growth', slug: 'seo-growth', sortOrder: 2 },
-  { name: 'Support', slug: 'support', sortOrder: 3 }
+  { name: 'Support', slug: 'support', sortOrder: 3 },
+  { name: 'AI & Automation', slug: 'ai-automation', sortOrder: 4 }
 ]
 
 interface SeedService {
@@ -39,8 +40,8 @@ export const services: SeedService[] = [
       '<p>Your website is your busiest salesperson. I build sites that load in under two seconds, work flawlessly on every device and are structured so search engines understand them from day one.</p><h2>What you get</h2><p>A production-ready site built on a modern stack (Nuxt, Vue 3, TypeScript, PostgreSQL) with a clean admin area so you can edit content without calling a developer. Performance, accessibility and technical SEO are part of the build, not an afterthought.</p><h2>Who it is for</h2><p>Founders, agencies and small teams who need a reliable, maintainable website or a custom web app — and want one person accountable from first sketch to launch.</p>',
     icon: 'code',
     category: 'development',
-    cover: '/seed/web-development.svg',
-    images: ['/seed/web-development.svg', '/seed/web-development-2.svg'],
+    cover: '/seed/services/web-development.jpg',
+    images: ['/seed/services/web-development.jpg'],
     deliverables: [
       'Responsive design for mobile, tablet and desktop',
       'Component-based build in Nuxt 4 and TypeScript',
@@ -58,13 +59,9 @@ export const services: SeedService[] = [
       { title: 'Launch & handover', description: 'Deployment, redirects and monitoring, plus training so you are confident running the site.' }
     ],
     tools: ['Nuxt', 'Vue 3', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Drizzle ORM', 'Figma'],
-    showPricing: true,
-    startingPrice: 'From $1,800',
-    packages: [
-      { name: 'Starter', price: '$1,800', description: 'A focused brochure site for a new business.', features: ['Up to 5 pages', 'Responsive design', 'Contact form', 'Basic SEO setup'] },
-      { name: 'Business', price: '$4,500', description: 'A complete website with a content admin.', features: ['Up to 12 pages', 'Blog and admin panel', 'Advanced SEO and schema', 'Analytics dashboard'] },
-      { name: 'Custom app', price: 'Quote', description: 'Web apps, portals and integrations.', features: ['Custom features', 'Authentication', 'Database design', 'API integrations'] }
-    ],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
     turnaround: '3–6 weeks',
     faqs: [
       { question: 'Do I own the website and code?', answer: 'Yes. When the final invoice is paid, the code, design files and content are fully yours.' },
@@ -84,8 +81,8 @@ export const services: SeedService[] = [
       '<p>Great content cannot rank if search engines struggle to crawl, render or understand your site. A technical SEO audit finds exactly what is holding you back and turns it into an ordered to-do list.</p><h2>How the audit works</h2><p>I crawl your site, review index coverage and Core Web Vitals, inspect structured data and internal linking, and compare you against the pages that currently outrank you. Every finding includes the evidence, the impact and the fix.</p><h2>What changes after</h2><p>You leave with a clear plan your team (or I) can implement in weeks — ranked by impact and effort, so quick wins come first.</p>',
     icon: 'search',
     category: 'seo-growth',
-    cover: '/seed/seo-audit.svg',
-    images: ['/seed/seo-audit.svg', '/seed/seo-audit-2.svg'],
+    cover: '/seed/services/technical-seo-audit.jpg',
+    images: ['/seed/services/technical-seo-audit.jpg'],
     deliverables: [
       'Full crawl and indexation analysis',
       'Core Web Vitals and page-speed review',
@@ -102,12 +99,9 @@ export const services: SeedService[] = [
       { title: 'Report & walkthrough', description: 'A clear written report and a call to walk through every recommendation.' }
     ],
     tools: ['Search Console', 'Screaming Frog', 'Lighthouse', 'PageSpeed Insights', 'Ahrefs', 'Schema validators'],
-    showPricing: true,
-    startingPrice: 'From $650',
-    packages: [
-      { name: 'Audit', price: '$650', description: 'One-off audit and roadmap for sites up to 500 pages.', features: ['Technical crawl', 'Core Web Vitals review', 'Action plan', 'Walkthrough call'] },
-      { name: 'Audit + fixes', price: '$1,900', description: 'The audit, plus implementation of the top fixes.', features: ['Everything in Audit', 'Up to 20 hours of fixes', 'Before/after reporting'] }
-    ],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
     turnaround: '5–7 business days',
     faqs: [
       { question: 'What do you need from me?', answer: 'Read access to Google Search Console and your analytics, plus a short call about your goals and competitors.' },
@@ -126,8 +120,8 @@ export const services: SeedService[] = [
       '<p>Online stores live and die by speed and findability. I build fast, SEO-ready storefronts — headless or on a platform you already use — with product pages structured to earn rich results in search.</p><h2>Built to sell</h2><p>Clean category architecture, schema markup for products and reviews, optimised images and a frictionless checkout flow that keeps mobile shoppers moving.</p>',
     icon: 'cart',
     category: 'development',
-    cover: '/seed/ecommerce.svg',
-    images: ['/seed/ecommerce.svg', '/seed/ecommerce-2.svg'],
+    cover: '/seed/services/ecommerce-development.jpg',
+    images: ['/seed/services/ecommerce-development.jpg'],
     deliverables: [
       'Storefront design and build (headless or platform-based)',
       'Product and category page templates optimised for search',
@@ -164,8 +158,8 @@ export const services: SeedService[] = [
       '<p>Slow pages cost rankings and revenue. I profile your site, find what is actually slowing it down and fix it — images, JavaScript, fonts, server response and layout shifts.</p><h2>Measured, not guessed</h2><p>Every change is validated with lab and field data, so you can see the before and after in the numbers that matter: LCP, INP and CLS.</p>',
     icon: 'bolt',
     category: 'seo-growth',
-    cover: '/seed/performance.svg',
-    images: ['/seed/performance.svg', '/seed/performance-2.svg'],
+    cover: '/seed/services/website-performance-optimization.jpg',
+    images: ['/seed/services/website-performance-optimization.jpg'],
     deliverables: [
       'Core Web Vitals baseline and target report',
       'Image, font and script optimisation',
@@ -180,17 +174,15 @@ export const services: SeedService[] = [
       { title: 'Verify', description: 'Re-measure and report the improvements with evidence.' }
     ],
     tools: ['Lighthouse', 'WebPageTest', 'Chrome DevTools', 'Nuxt', 'Vite'],
-    showPricing: true,
-    startingPrice: 'From $900',
-    packages: [
-      { name: 'Speed sprint', price: '$900', description: 'Up to 10 hours of focused optimisation.', features: ['Baseline report', 'Top fixes implemented', 'Before/after report'] }
-    ],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
     turnaround: '1–2 weeks',
     faqs: [
       { question: 'Does it work on any platform?', answer: 'Yes. WordPress, Shopify, Nuxt, Next and custom builds all have common, fixable bottlenecks.' },
       { question: 'What score will I reach?', answer: 'Most sites reach 90+ on mobile Lighthouse after optimisation, but I optimise for real-user Core Web Vitals, not just the score.' }
     ],
-    featured: false,
+    featured: true,
     seoTitle: 'Website Performance Optimization & Core Web Vitals',
     seoDescription: 'Make your website fast. Core Web Vitals, image and script optimisation with measurable before-and-after results.'
   },
@@ -202,8 +194,8 @@ export const services: SeedService[] = [
       '<p>Rankings come from matching what people search for with pages that answer it better than anyone else. I research the topics your customers care about, plan content around them and optimise every page element.</p><h2>Not just keywords</h2><p>Search intent, internal linking, titles that earn clicks and content structure that wins featured snippets — all aligned to your business goals.</p>',
     icon: 'pen',
     category: 'seo-growth',
-    cover: '/seed/content-seo.svg',
-    images: ['/seed/content-seo.svg', '/seed/content-seo-2.svg'],
+    cover: '/seed/services/content-and-on-page-seo.jpg',
+    images: ['/seed/services/content-and-on-page-seo.jpg'],
     deliverables: [
       'Keyword and search-intent research',
       'Content gap analysis and 3-month content plan',
@@ -219,12 +211,9 @@ export const services: SeedService[] = [
       { title: 'Measure', description: 'Track rankings, clicks and leads, then iterate monthly.' }
     ],
     tools: ['Search Console', 'Ahrefs', 'Google Analytics', 'Surfer', 'Notion'],
-    showPricing: true,
-    startingPrice: 'From $750 / month',
-    packages: [
-      { name: 'Growth', price: '$750 / mo', description: 'Ongoing on-page work and reporting.', features: ['4 optimised pages / month', 'Keyword tracking', 'Monthly report'] },
-      { name: 'Scale', price: '$1,600 / mo', description: 'Content plan plus execution support.', features: ['8 optimised pages / month', 'Content briefs', 'Link building outreach plan'] }
-    ],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
     turnaround: 'First results in 6–12 weeks',
     faqs: [
       { question: 'Do you write the content?', answer: 'I provide detailed briefs and optimise copy. I can also work with your writers or recommend trusted ones.' },
@@ -242,8 +231,8 @@ export const services: SeedService[] = [
       '<p>A website is never finished. Dependencies age, content changes and small bugs pile up. A maintenance plan keeps everything updated and gives you a developer on call.</p><h2>Peace of mind</h2><p>Regular updates and backups, uptime monitoring, security patches and a monthly block of hours for improvements.</p>',
     icon: 'shield',
     category: 'support',
-    cover: '/seed/maintenance.svg',
-    images: ['/seed/maintenance.svg', '/seed/maintenance-2.svg'],
+    cover: '/seed/services/website-maintenance-and-support.jpg',
+    images: ['/seed/services/website-maintenance-and-support.jpg'],
     deliverables: [
       'Dependency and security updates',
       'Daily backups with restore testing',
@@ -257,20 +246,83 @@ export const services: SeedService[] = [
       { title: 'Maintain', description: 'Scheduled updates, backups and improvements each month.' }
     ],
     tools: ['Uptime monitoring', 'GitHub Actions', 'Sentry', 'PostgreSQL', 'Linux'],
-    showPricing: true,
-    startingPrice: 'From $120 / month',
-    packages: [
-      { name: 'Essential', price: '$120 / mo', description: 'Keep it running and secure.', features: ['Updates & backups', 'Monitoring', '1 hour of changes'] },
-      { name: 'Plus', price: '$320 / mo', description: 'Ongoing improvements included.', features: ['Everything in Essential', '4 hours of changes', 'Priority response'] }
-    ],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
     turnaround: 'Response within 1 business day',
     faqs: [
       { question: 'Do you maintain sites you did not build?', answer: 'Yes, after a short health check to understand what I am taking on.' },
       { question: 'Can I cancel any time?', answer: 'Yes, with 30 days notice and a full handover of any documentation.' }
     ],
-    featured: false,
+    featured: true,
     seoTitle: 'Website Maintenance & Support Plans',
     seoDescription: 'Monthly website maintenance: updates, security, backups, monitoring and developer hours for improvements.'
+  },
+  {
+    slug: "ai-automation",
+    title: "AI Automation Specialist",
+    summary: "AI chatbots, assistants and agents that answer customers, qualify leads and take repetitive work off your plate.",
+    overview:
+      "<p>Most businesses lose hours every week to questions that have the same answer, data that is copied between tools, and leads that go cold. I design AI automations that do this work for you — reliably, with a human in the loop where it matters.</p><h2>What you get</h2><p>Custom AI assistants trained on your own content and data: website chatbots, WhatsApp and email responders, lead qualification, document and invoice processing, and internal agents that search your knowledge base. Every build includes guardrails, logging and a clear fallback to a real person.</p><h2>Who it is for</h2><p>Founders, agencies and small teams who want practical AI that saves time and money today — not a science project.</p>",
+    icon: "bot",
+    category: "ai-automation",
+    cover: '/seed/services/ai-automation.jpg',
+    images: ['/seed/services/ai-automation.jpg'],
+    deliverables: ["AI chatbot or assistant trained on your own content","Lead capture and qualification flows","WhatsApp, email and website channel integrations","Document, invoice and data extraction","Hand-off to a human with full conversation history","Usage monitoring, cost controls and safety guardrails","Documentation and a recorded walkthrough"],
+    processSteps: [{"title":"Find the wins","description":"We map your repetitive tasks and pick the automations with the biggest payoff first."},{"title":"Prototype","description":"A working prototype on your real data within days, so you can judge quality before committing."},{"title":"Build & connect","description":"Production build with your tools connected, plus guardrails, logging and human fallback."},{"title":"Launch & tune","description":"Go live, measure answers and savings, and keep improving from real conversations."}],
+    tools: ["OpenAI","Claude","LangChain","Vector databases","n8n","Python","TypeScript"],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
+    turnaround: "1–4 weeks",
+    faqs: [{"question":"Is my data safe?","answer":"Yes. Your data is only used to answer your own customers, never to train public models, and sensitive fields can be masked before they reach the AI."},{"question":"What if the AI gets something wrong?","answer":"Answers are grounded in your own content, uncertain cases are handed to a person, and every conversation is logged so quality keeps improving."},{"question":"Do I need technical knowledge?","answer":"No. I handle the technical side and show you a simple dashboard to review conversations and results."}],
+    featured: true,
+    seoTitle: "AI Automation Specialist — Chatbots, Agents & Workflows",
+    seoDescription: "Custom AI chatbots, assistants and agents that answer customers, qualify leads and automate repetitive work, built around your own data."
+  },
+  {
+    slug: "n8n-workflow-automation",
+    title: "n8n Workflow Automation",
+    summary: "Connect your apps and automate busy work with self-hosted n8n workflows — CRM, email, sheets, Slack, AI and more.",
+    overview:
+      "<p>n8n lets your tools talk to each other without expensive per-task fees. I build, host and maintain n8n workflows that move data, send messages, update your CRM and trigger AI steps automatically.</p><h2>What you get</h2><p>Production-grade workflows with error handling, retries and alerts — from simple form-to-spreadsheet flows to multi-step pipelines with webhooks, APIs, databases and AI agents. I can also set up and secure a self-hosted n8n instance so you own your automations and data.</p><h2>Who it is for</h2><p>Teams drowning in copy-paste work who want reliable automation they control, without being locked into a single vendor.</p>",
+    icon: "workflow",
+    category: "ai-automation",
+    cover: '/seed/services/n8n-workflow-automation.jpg',
+    images: ['/seed/services/n8n-workflow-automation.jpg'],
+    deliverables: ["Workflow design and build in n8n","Integrations with your CRM, email, Google Workspace, Slack, WhatsApp and databases","Webhooks and custom API connections","AI steps for summaries, classification and replies","Error handling, retries and failure alerts","Self-hosted n8n setup, backups and security","Documentation and team training"],
+    processSteps: [{"title":"Map the process","description":"We walk through how the work happens today and where time is lost."},{"title":"Design the workflow","description":"A clear diagram of triggers, steps and edge cases that you approve before building."},{"title":"Build & test","description":"Workflows are built, tested with real data and hardened with error handling."},{"title":"Deploy & monitor","description":"Go live on your own server with alerts, so problems are caught before you notice."}],
+    tools: ["n8n","Webhooks","REST APIs","Google Workspace","Slack","WhatsApp API","PostgreSQL","Docker"],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
+    turnaround: "3 days – 3 weeks",
+    faqs: [{"question":"Why n8n instead of Zapier or Make?","answer":"n8n can be self-hosted, has no per-task pricing at scale and is far more flexible for complex logic, custom code and AI steps."},{"question":"Can you host it for me?","answer":"Yes. I can set it up on your own server or a managed VPS, with backups, updates and monitoring included."},{"question":"Can you fix or extend workflows I already have?","answer":"Absolutely. I regularly take over existing n8n setups, clean them up and add the missing pieces."}],
+    featured: true,
+    seoTitle: "n8n Workflow Automation Expert — Integrations & Self-hosting",
+    seoDescription: "Automate your business with reliable n8n workflows: app integrations, webhooks, AI steps and secure self-hosted setups."
+  },
+  {
+    slug: "website-deployment-hosting",
+    title: "Website Deployment & Hosting",
+    summary: "Get your website live fast and secure — domain, hosting, SSL, CI/CD and monitoring set up properly.",
+    overview:
+      "<p>A finished website is only useful once it is live, fast and secure. I take your project from your laptop to production — and keep it there.</p><h2>What you get</h2><p>Domain and DNS setup, production hosting on a modern platform or your own VPS, free SSL, automated deployments from Git, environment and secret management, backups and uptime monitoring. Everything is documented so you are never locked in.</p><h2>Who it is for</h2><p>Anyone with a Nuxt, Vue, Node or WordPress site that needs to go live, move to better hosting, or stop breaking on every update.</p>",
+    icon: "rocket",
+    category: "development",
+    cover: '/seed/services/website-deployment-hosting.jpg',
+    images: ['/seed/services/website-deployment-hosting.jpg'],
+    deliverables: ["Domain, DNS and business email setup","Production hosting on Vercel, Netlify, a VPS or your own cloud","Free SSL certificates and HTTPS everywhere","CI/CD: automatic deploys from GitHub","Environment variables, secrets and database setup","Backups, uptime monitoring and error alerts","Zero-downtime migration from your current host"],
+    processSteps: [{"title":"Review","description":"We look at your project, traffic and budget and pick the right hosting setup."},{"title":"Provision","description":"Servers, domain, DNS, SSL and databases are set up and secured."},{"title":"Automate","description":"A pipeline deploys every change from Git automatically and safely."},{"title":"Go live & monitor","description":"Launch with a checklist, then watch uptime, speed and errors from day one."}],
+    tools: ["Vercel","Netlify","Docker","Nginx","GitHub Actions","Cloudflare","Linux VPS","PostgreSQL"],
+    showPricing: false,
+    startingPrice: null,
+    packages: [],
+    turnaround: "1–3 days",
+    faqs: [{"question":"Can you move my existing website?","answer":"Yes. I migrate sites between hosts with no downtime and keep your search rankings and email working."},{"question":"Who owns the hosting accounts?","answer":"You do. Everything is set up under your own accounts, with full documentation and access."},{"question":"Do you support WordPress or only custom sites?","answer":"Both. Nuxt, Vue, Node.js, static sites and WordPress can all be deployed and secured."}],
+    featured: true,
+    seoTitle: "Website Deployment & Hosting — Go Live Fast and Secure",
+    seoDescription: "Professional website deployment: domain, hosting, SSL, CI/CD, backups and monitoring set up properly and documented."
   }
 ]
 
@@ -567,14 +619,14 @@ export const skills = [
 
 export const experiences = [
   {
+    role: 'Senior Full-Stack Developer & AI Specialist', company: 'ShahiSpace', location: null,
+    startDate: '2024', endDate: null,
+    description: 'Building and shipping full-stack web products end to end — Nuxt and Vue front ends, Node.js APIs and PostgreSQL — and leading the integration of AI features and workflow automation (chatbots, assistants and n8n pipelines) into the product.'
+  },
+  {
     role: 'Freelance Full-Stack Developer & SEO Consultant', company: 'Independent', location: 'Remote',
     startDate: '2022', endDate: null,
     description: 'Building websites, web apps and SEO programmes for clients in e-commerce, healthcare, legal and logistics. Focus on performance, search visibility and maintainable code.'
-  },
-  {
-    role: 'Senior Front-End Developer', company: 'Brightwave Digital', location: 'Remote',
-    startDate: '2020', endDate: '2022',
-    description: 'Led front-end delivery for 20+ client sites in Vue and Nuxt, introduced a shared component library and cut average page weight by 45%.'
   },
   {
     role: 'Web Developer & SEO Analyst', company: 'Orbit Media Works', location: 'On-site',

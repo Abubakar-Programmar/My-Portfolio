@@ -59,7 +59,7 @@ usePageSeo(() => ({
         </div>
         <div v-if="data?.tags.length" class="mt-4 flex flex-wrap items-center gap-2 text-sm">
           <span class="font-medium text-ink">Topics:</span>
-          <button v-for="t in data.tags" :key="t.id" type="button" class="rounded-full px-3 py-1 transition" :class="query.tag === t.slug ? 'bg-ink text-white' : 'text-muted hover:bg-surface hover:text-ink'" @click="setQuery({ tag: query.tag === t.slug ? undefined : t.slug })">#{{ t.name }}</button>
+          <button v-for="t in data.tags" :key="t.id" type="button" class="rounded-full px-3 py-1 transition" :class="query.tag === t.slug ? 'bg-accent text-cream' : 'text-muted hover:bg-accent-soft hover:text-accent'" @click="setQuery({ tag: query.tag === t.slug ? undefined : t.slug })">#{{ t.name }}</button>
         </div>
 
         <div class="mt-10" aria-live="polite">

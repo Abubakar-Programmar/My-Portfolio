@@ -22,5 +22,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <span ref="el" class="tabular-nums">{{ shown.toLocaleString('en-US') }}{{ suffix }}</span>
+  <!-- The number may legitimately differ between a cached server render and fresh client data. -->
+  <span ref="el" class="tabular-nums" data-allow-mismatch="text">{{ shown.toLocaleString('en-US') }}{{ suffix }}</span>
 </template>

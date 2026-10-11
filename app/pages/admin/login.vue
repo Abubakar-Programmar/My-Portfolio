@@ -49,7 +49,7 @@ async function submit() {
         </div>
         <div>
           <div class="flex items-center justify-between"><label for="password" class="label">Password</label><NuxtLink to="/admin/forgot-password" class="mb-1.5 text-sm font-medium text-accent hover:underline">Forgot?</NuxtLink></div>
-          <input id="password" v-model="form.password" type="password" class="input" :class="{ 'input-error': errors.password }" autocomplete="current-password" required>
+          <PasswordInput id="password" v-model="form.password" :invalid="Boolean(errors.password)" autocomplete="current-password" required />
           <p v-if="errors.password" class="field-error" role="alert">{{ errors.password }}</p>
         </div>
       </div>

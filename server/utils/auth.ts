@@ -1,4 +1,4 @@
-import { createHash, randomBytes } from 'node:crypto'
+import { createHash, createHmac, randomBytes, randomInt, timingSafeEqual } from 'node:crypto'
 import { and, eq, isNull } from 'drizzle-orm'
 import type { H3Event } from 'h3'
 import { adminSession } from '../database/schema'
@@ -16,6 +16,27 @@ export function sha256(value: string): string {
 
 export function randomToken(bytes = 32): string {
   return randomBytes(bytes).toString('base64url')
+}
+
+/** A fresh 6-digit one-time code (cryptographically random, zero-padded). */
+export function generateOtp(): string {
+  return String(randomInt(0, 1_000_000)).padStart(6, '0')
+}
+
+/**
+ * Keyed hash of a one-time code. HMAC (not a bare hash) so a leaked table cannot be brute-forced
+ * offline, and so an OTP hash can never be mistaken for a sha256 reset-token hash.
+ */
+export function otpHash(userId: string, otp: string): string {
+  const secret = (useRuntimeConfig().session as { password?: string } | undefined)?.password
+  if (!secret) throw apiError(500, 'Server is not configured for password recovery.')
+  return createHmac('sha256', secret).update(`otp:${userId}:${otp}`).digest('hex')
+}
+
+export function safeEqual(a: string, b: string): boolean {
+  const x = Buffer.from(a)
+  const y = Buffer.from(b)
+  return x.length === y.length && timingSafeEqual(x, y)
 }
 
 /**

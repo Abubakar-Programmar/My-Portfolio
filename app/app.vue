@@ -30,7 +30,7 @@ if (!isAdmin.value) {
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <NuxtLoadingIndicator color="#5B3DF5" :height="3" :throttle="300" />
+    <NuxtLoadingIndicator color="#6B0F1A" :height="3" :throttle="300" />
     <MaintenanceScreen v-if="maintenance" />
     <NuxtLayout v-else>
       <NuxtPage />

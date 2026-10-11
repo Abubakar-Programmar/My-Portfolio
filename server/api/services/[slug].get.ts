@@ -16,5 +16,7 @@ export default defineEventHandler(async (event) => {
       .where(and(publishedService(), ne(service.id, row.service.id))).orderBy(asc(service.sortOrder)).limit(3),
     db.select(projectCardColumns).from(project).where(and(publishedProject(), eq(project.serviceId, row.service.id))).orderBy(asc(project.sortOrder)).limit(3)
   ])
-  return { ...row.service, categoryName: row.categoryName, categorySlug: row.categorySlug, related, caseStudies }
+  // Prices are not published on the website.
+  const { showPricing: _showPricing, startingPrice: _startingPrice, packages: _packages, ...publicService } = row.service
+  return { ...publicService, categoryName: row.categoryName, categorySlug: row.categorySlug, related, caseStudies }
 })

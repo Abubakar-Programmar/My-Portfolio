@@ -10,6 +10,9 @@ export default defineEventHandler(async (event) => {
   if (!row || !(await verifyAdminPassword(row.passwordHash, currentPassword))) {
     throw apiError(400, 'Your current password is incorrect.', { currentPassword: 'Incorrect password' })
   }
+  if (newPassword === currentPassword) {
+    throw apiError(400, 'Your new password must be different from the current one.', { newPassword: 'Choose a password you have not used before' })
+  }
   await db.update(adminUser).set({ passwordHash: await hashAdminPassword(newPassword) }).where(eq(adminUser.id, user.id))
   // Sign out every other device.
   await db.update(adminSession).set({ revokedAt: new Date() }).where(and(eq(adminSession.userId, user.id), ne(adminSession.id, sid), isNull(adminSession.revokedAt)))

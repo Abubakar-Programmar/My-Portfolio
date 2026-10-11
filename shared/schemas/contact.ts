@@ -1,7 +1,9 @@
 import { z } from 'zod'
 
 export const BUDGET_RANGES = [
-  'Under $1,000',
+  'Less than $500',
+  '$500',
+  '$500 – $1,000',
   '$1,000 – $3,000',
   '$3,000 – $10,000',
   '$10,000+',

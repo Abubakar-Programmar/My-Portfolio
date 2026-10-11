@@ -15,7 +15,7 @@ function toTop() {
 <template>
   <footer class="border-t border-line bg-paper">
     <div class="container-x grid gap-12 py-14 md:grid-cols-12">
-      <div class="md:col-span-5">
+      <div class="md:col-span-4">
         <BrandMark />
         <p class="mt-4 max-w-sm text-muted">{{ site.profile.shortBio }}</p>
         <div class="mt-6"><SocialLinks :items="site.socials.items" /></div>
@@ -36,10 +36,10 @@ function toTop() {
         </ul>
       </nav>
 
-      <div class="md:col-span-3">
+      <div class="md:col-span-4">
         <h2 class="text-sm font-semibold uppercase tracking-wider text-ink">Get in touch</h2>
         <ul class="mt-4 space-y-2.5 text-muted">
-          <li v-if="site.contact.email"><a :href="`mailto:${site.contact.email}`" class="inline-flex items-center gap-2 break-all transition hover:text-accent"><AppIcon name="mail" :size="16" /> {{ site.contact.email }}</a></li>
+          <li v-if="site.contact.email"><a :href="`mailto:${site.contact.email}`" class="inline-flex items-start gap-2 break-words text-[0.95rem] transition hover:text-accent"><AppIcon name="mail" :size="16" class="mt-1" /> {{ site.contact.email }}</a></li>
           <li v-if="site.contact.phone"><a :href="`tel:${site.contact.phone.replace(/\s/g, '')}`" class="inline-flex items-center gap-2 transition hover:text-accent"><AppIcon name="phone" :size="16" /> {{ site.contact.phone }}</a></li>
           <li v-if="site.contact.location" class="inline-flex items-center gap-2"><AppIcon name="map-pin" :size="16" /> {{ site.contact.location }}</li>
         </ul>

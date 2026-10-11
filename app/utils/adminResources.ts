@@ -94,14 +94,6 @@ export const resourceConfigs: ResourceConfig[] = [
         { key: 'tools', label: 'Tools & technologies', type: 'chips', placeholder: 'Type a tool and press Enter' },
         { key: 'turnaround', label: 'Turnaround time', type: 'text', placeholder: 'e.g. 3–6 weeks' }
       ] },
-      { title: 'Pricing', description: 'Prices are only shown publicly when the toggle is on.', fields: [
-        { key: 'showPricing', label: 'Show pricing on the website', type: 'toggle' },
-        { key: 'startingPrice', label: 'Starting from', type: 'text', placeholder: 'e.g. From $1,800' },
-        { key: 'packages', label: 'Packages', type: 'objects', itemLabel: 'Package', fields: [
-          { key: 'name', label: 'Name', type: 'text', half: true }, { key: 'price', label: 'Price', type: 'text', half: true },
-          { key: 'description', label: 'Description', type: 'text' }, { key: 'features', label: 'Features', type: 'strings' }
-        ] }
-      ] },
       { title: 'FAQs', fields: [
         { key: 'faqs', label: 'Questions', type: 'objects', itemLabel: 'FAQ', fields: [
           { key: 'question', label: 'Question', type: 'text' }, { key: 'answer', label: 'Answer', type: 'textarea', rows: 3 }

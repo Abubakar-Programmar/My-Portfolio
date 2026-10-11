@@ -30,7 +30,7 @@ useEventListener('keydown', (e: KeyboardEvent) => {
 <template>
   <header
     class="fixed inset-x-0 top-0 z-40 transition-all duration-300"
-    :class="scrolled ? 'border-b border-line bg-white/85 shadow-[0_1px_0_rgba(15,18,32,.03)] backdrop-blur-xl' : 'border-b border-transparent bg-transparent'"
+    :class="scrolled ? 'border-b border-line bg-cream/85 shadow-[0_1px_0_rgba(31,11,16,.04)] backdrop-blur-xl' : 'border-b border-transparent bg-transparent'"
   >
     <div class="container-x flex h-[4.5rem] items-center justify-between gap-6">
       <BrandMark />

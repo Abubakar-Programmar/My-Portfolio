@@ -71,9 +71,9 @@ const shortUa = (ua: string | null) => (ua ?? 'Unknown device').replace(/\(.*?\)
       <section class="card p-5 sm:p-6" aria-labelledby="pw-h">
         <h2 id="pw-h" class="text-lg font-bold text-ink">Change password</h2>
         <form novalidate class="mt-4 space-y-4" @submit.prevent="changePassword">
-          <div><label for="cur" class="label">Current password</label><input id="cur" v-model="pw.currentPassword" type="password" class="input" :class="{ 'input-error': pwErrors.currentPassword }" autocomplete="current-password"><p v-if="pwErrors.currentPassword" class="field-error" role="alert">{{ pwErrors.currentPassword }}</p></div>
-          <div><label for="new" class="label">New password</label><input id="new" v-model="pw.newPassword" type="password" class="input" :class="{ 'input-error': pwErrors.newPassword }" autocomplete="new-password"><p v-if="pwErrors.newPassword" class="field-error" role="alert">{{ pwErrors.newPassword }}</p><p v-else class="hint">At least 10 characters with upper- and lowercase letters and a number.</p></div>
-          <div><label for="conf" class="label">Confirm new password</label><input id="conf" v-model="pw.confirm" type="password" class="input" :class="{ 'input-error': pwErrors.confirm }" autocomplete="new-password"><p v-if="pwErrors.confirm" class="field-error" role="alert">{{ pwErrors.confirm }}</p></div>
+          <div><label for="cur" class="label">Current password</label><PasswordInput id="cur" v-model="pw.currentPassword" :invalid="Boolean(pwErrors.currentPassword)" autocomplete="current-password" /><p v-if="pwErrors.currentPassword" class="field-error" role="alert">{{ pwErrors.currentPassword }}</p></div>
+          <div><label for="new" class="label">New password</label><PasswordInput id="new" v-model="pw.newPassword" :invalid="Boolean(pwErrors.newPassword)" autocomplete="new-password" /><p v-if="pwErrors.newPassword" class="field-error" role="alert">{{ pwErrors.newPassword }}</p><p v-else class="hint">At least 10 characters with upper- and lowercase letters and a number.</p></div>
+          <div><label for="conf" class="label">Confirm new password</label><PasswordInput id="conf" v-model="pw.confirm" :invalid="Boolean(pwErrors.confirm)" autocomplete="new-password" /><p v-if="pwErrors.confirm" class="field-error" role="alert">{{ pwErrors.confirm }}</p></div>
           <button type="submit" class="btn btn-primary btn-sm" :disabled="pwBusy">{{ pwBusy ? 'Saving…' : 'Change password' }}</button>
         </form>
       </section>
@@ -89,7 +89,7 @@ const shortUa = (ua: string | null) => (ua ?? 'Unknown device').replace(/\(.*?\)
         </div>
         <div v-else class="mt-4 space-y-3">
           <label for="dpw" class="label">Confirm your password to turn it off</label>
-          <div class="flex gap-2"><input id="dpw" v-model="disablePw" type="password" class="input max-w-xs" autocomplete="current-password"><button type="button" class="btn btn-danger btn-sm" :disabled="!disablePw" @click="disable">Disable</button></div>
+          <div class="flex gap-2"><PasswordInput id="dpw" v-model="disablePw" class="max-w-xs flex-1" autocomplete="current-password" /><button type="button" class="btn btn-danger btn-sm" :disabled="!disablePw" @click="disable">Disable</button></div>
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 // UX guard for the admin area. The real protection is the server-side guard on /api/admin/*.
-const OPEN_ROUTES = ['/admin/login', '/admin/forgot-password', '/admin/reset-password']
+const OPEN_ROUTES = ['/admin/login', '/admin/forgot-password']
 
 export default defineNuxtRouteMiddleware(async (to) => {
   if (!to.path.startsWith('/admin')) return

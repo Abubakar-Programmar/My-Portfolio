@@ -5,7 +5,7 @@ export default defineEventHandler(async () => {
   const db = useDb()
   const [services, projects, testimonials, posts, skills] = await Promise.all([
     db.select(serviceCardColumns).from(service).leftJoin(serviceCategory, eq(serviceCategory.id, service.categoryId))
-      .where(and(publishedService(), eq(service.featured, true))).orderBy(asc(service.sortOrder)).limit(6),
+      .where(and(publishedService(), eq(service.featured, true))).orderBy(asc(service.sortOrder)).limit(9),
     db.select(projectCardColumns).from(project)
       .where(and(publishedProject(), eq(project.featured, true))).orderBy(asc(project.sortOrder)).limit(4),
     db.select().from(testimonial).where(and(eq(testimonial.status, 'published'), eq(testimonial.featured, true))).orderBy(asc(testimonial.sortOrder)).limit(10),

@@ -86,13 +86,13 @@ async function toggleStar(row: Row) {
 
     <div class="card overflow-hidden">
       <div v-if="data?.items.length" class="flex items-center gap-3 border-b border-line bg-surface px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-muted">
-        <input type="checkbox" class="h-4 w-4 accent-[#5B3DF5]" :checked="allSelected" aria-label="Select all messages" @change="toggleAll">
+        <input type="checkbox" class="h-4 w-4 accent-[#6B0F1A]" :checked="allSelected" aria-label="Select all messages" @change="toggleAll">
         <span>{{ data.total }} message{{ data.total === 1 ? '' : 's' }}</span>
       </div>
       <ul class="divide-y divide-line">
         <template v-if="status === 'pending' && !data"><li v-for="n in 6" :key="n" class="p-4"><div class="skeleton h-12" /></li></template>
         <li v-for="m in data?.items ?? []" :key="m.id" class="flex items-start gap-3 px-4 py-3.5 transition hover:bg-paper" :class="m.status === 'unread' ? 'bg-accent-soft/40' : ''">
-          <input v-model="selected" type="checkbox" :value="m.id" class="mt-1.5 h-4 w-4 accent-[#5B3DF5]" :aria-label="`Select message from ${m.name}`">
+          <input v-model="selected" type="checkbox" :value="m.id" class="mt-1.5 h-4 w-4 accent-[#6B0F1A]" :aria-label="`Select message from ${m.name}`">
           <button type="button" class="mt-0.5 shrink-0" :class="m.starred ? 'text-amber-500' : 'text-line hover:text-amber-400'" :aria-label="m.starred ? 'Unstar' : 'Star'" @click="toggleStar(m)"><AppIcon :name="m.starred ? 'star-filled' : 'star'" :size="18" /></button>
           <NuxtLink :to="`/admin/inbox/${m.id}`" class="min-w-0 flex-1">
             <div class="flex flex-wrap items-center gap-x-3 gap-y-1">

@@ -11,7 +11,7 @@ usePageSeo({ title: 'Terms of Service', description: 'The terms that apply when 
     <p>You may browse the site and send enquiries for lawful purposes. Please do not attempt to disrupt the site, probe it for vulnerabilities, or submit spam or abusive content.</p>
 
     <h2>Services and quotes</h2>
-    <p>Descriptions and “starting from” prices on this website are indicative and not binding offers. Scope, price, timelines and payment terms are confirmed in a written quote before work begins.</p>
+    <p>Descriptions of services on this website are indicative and not binding offers. Scope, price, timelines and payment terms are confirmed in a written quote before work begins.</p>
 
     <h2>Intellectual property</h2>
     <p>Content on this site, including text, design and case studies, belongs to {{ site.profile.name }} or is used with permission. Client work shown here is displayed with the client’s consent. Ownership of deliverables is transferred to clients as set out in each project agreement.</p>

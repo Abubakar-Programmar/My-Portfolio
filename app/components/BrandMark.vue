@@ -1,10 +1,18 @@
 <script setup lang="ts">
 const site = useSite()
 const name = computed(() => site.value.general.siteTitle)
+const route = useRoute()
+
+// Already on the home page: a normal link click would do nothing, so scroll to the top instead.
+function onClick(e: MouseEvent) {
+  if (route.path !== '/' || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
+  e.preventDefault()
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+}
 </script>
 
 <template>
-  <NuxtLink to="/" class="group inline-flex items-center gap-2.5" :aria-label="`${name} — home`">
+  <NuxtLink to="/" class="group inline-flex items-center gap-2.5" :aria-label="`${name} — home`" @click="onClick">
     <AppImage v-if="site.general.logo" :src="site.general.logo" :alt="name" :width="36" :height="36" loading="eager" class="h-9 w-9 rounded-xl object-contain" />
     <span v-else class="grid h-9 w-9 place-items-center rounded-xl bg-accent text-sm font-extrabold text-white transition-transform duration-300 group-hover:rotate-6">
       {{ initials(name) }}

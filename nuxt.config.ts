@@ -35,7 +35,7 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
         { rel: 'alternate', type: 'application/rss+xml', title: 'Blog RSS feed', href: '/rss.xml' }
       ],
-      meta: [{ name: 'theme-color', content: '#ffffff' }]
+      meta: [{ name: 'theme-color', content: '#F7F3E8' }]
     }
   },
 
@@ -100,17 +100,18 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { swr: 60 },
-    '/about': { swr: 300 },
-    '/services/**': { swr: 120 },
-    '/projects/**': { swr: 120 },
-    '/blog/**': { swr: 120 },
+    '/': { swr: 10 },
+    '/about': { swr: 10 },
+    '/services/**': { swr: 10 },
+    '/projects/**': { swr: 10 },
+    '/blog/**': { swr: 10 },
     '/admin/**': { robots: false, ssr: false },
     '/api/**': { headers: { 'x-robots-tag': 'noindex, nofollow' } },
     '/api/contact': { security: { rateLimiter: { tokensPerInterval: limit(5), interval: 600_000 } } },
     '/api/subscribe': { security: { rateLimiter: { tokensPerInterval: limit(5), interval: 600_000 } } },
     '/api/admin/login': { security: { rateLimiter: { tokensPerInterval: limit(10), interval: 600_000 } } },
     '/api/admin/forgot-password': { security: { rateLimiter: { tokensPerInterval: limit(5), interval: 900_000 } } },
+    '/api/admin/verify-otp': { security: { rateLimiter: { tokensPerInterval: limit(15), interval: 900_000 } } },
     '/api/admin/reset-password': { security: { rateLimiter: { tokensPerInterval: limit(10), interval: 900_000 } } },
     '/media/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' }, security: { rateLimiter: false } }
   },

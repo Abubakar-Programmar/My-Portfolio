@@ -131,14 +131,14 @@ const skillNames = computed(() => (data.value?.skills ?? []).map(s => s.name))
     <section class="section pt-0">
       <div class="container-x">
         <div v-reveal class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent to-accent-dark px-6 py-14 text-center sm:px-12 sm:py-20">
-          <div class="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-white/15 blur-3xl" aria-hidden="true" />
-          <div class="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-accent-ring/40 blur-3xl" aria-hidden="true" />
+          <div class="pointer-events-none absolute -left-20 -top-20 h-72 w-72 animate-blob-a rounded-full bg-white/15 blur-3xl" aria-hidden="true" />
+          <div class="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 animate-blob-b rounded-full bg-accent-ring/40 blur-3xl" aria-hidden="true" />
           <div class="relative">
             <h2 class="h2 text-white">{{ site.profile.ctaTitle }}</h2>
-            <p class="mx-auto mt-4 max-w-xl text-lg text-white/80">{{ site.profile.ctaText }}</p>
+            <p class="mx-auto mt-4 max-w-xl text-lg text-cream/85">{{ site.profile.ctaText }}</p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <NuxtLink to="/contact" class="btn bg-white text-accent-dark hover:-translate-y-0.5 hover:shadow-lift">Start a project <AppIcon name="arrow-right" :size="18" /></NuxtLink>
-              <a v-if="site.contact.whatsapp" :href="`https://wa.me/${site.contact.whatsapp}`" target="_blank" rel="noopener noreferrer" class="btn border border-white/30 text-white hover:bg-white/10">
+              <NuxtLink to="/contact" class="btn btn-light">Start a project <AppIcon name="arrow-right" :size="18" /></NuxtLink>
+              <a v-if="site.contact.whatsapp" :href="whatsappUrl(site.contact.whatsapp)" target="_blank" rel="noopener noreferrer" class="btn btn-light">
                 <AppIcon name="whatsapp" :size="18" /> WhatsApp
               </a>
             </div>

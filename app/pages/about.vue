@@ -62,7 +62,7 @@ const groups = computed(() => {
       </div>
     </section>
 
-    <!-- Experience & education -->
+    <!-- Experience & certifications -->
     <section class="section">
       <div class="container-x grid gap-14 lg:grid-cols-2">
         <div>
@@ -78,19 +78,9 @@ const groups = computed(() => {
           </ol>
         </div>
         <div>
-          <SectionHeading eyebrow="Education" title="Learning & credentials" />
-          <ol class="mt-10 space-y-8 border-l-2 border-line pl-7">
-            <li v-for="(e, i) in data?.educations ?? []" :key="e.id" v-reveal="i * 70" class="relative">
-              <span class="absolute -left-[2.15rem] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-accent bg-white" aria-hidden="true" />
-              <p class="text-sm font-semibold text-accent">{{ dateRange(e.startDate, e.endDate) }}</p>
-              <h3 class="mt-1 text-lg">{{ e.degree }}</h3>
-              <p class="text-muted">{{ e.institution }}</p>
-              <p v-if="e.description" class="mt-2">{{ e.description }}</p>
-            </li>
-          </ol>
-          <div v-if="data?.certifications.length" class="mt-12">
-            <h3 class="text-xl">Certifications</h3>
-            <ul class="mt-4 space-y-3">
+          <div v-if="data?.certifications.length">
+            <SectionHeading eyebrow="Credentials" title="Certifications" />
+            <ul class="mt-10 space-y-3">
               <li v-for="c in data.certifications" :key="c.id" class="card flex items-center gap-4 p-4">
                 <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-dark"><AppIcon name="award" /></span>
                 <div class="min-w-0">

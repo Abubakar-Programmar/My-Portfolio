@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { randomBytes } from 'node:crypto'
 import { appendFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { count, eq } from 'drizzle-orm'
+import { count, desc, eq } from 'drizzle-orm'
 import type { PgTable } from 'drizzle-orm/pg-core'
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
@@ -17,9 +17,12 @@ import { readingMinutes, slugify } from '../../shared/utils/text'
 /**
  * Idempotent: every section is only seeded when its table is empty, so re-running
  * never duplicates or overwrites content you have edited. `--reset` wipes content first.
+ * `--sync-services` adds any sample services missing from a populated database and refreshes the
+ * artwork of untouched sample services (services whose image you replaced are left alone).
  */
 async function main() {
   const reset = process.argv.includes('--reset')
+  const syncServices = process.argv.includes('--sync-services')
   await runMigrations()
   const client = postgres(dbUrl(), { max: 1, onnotice: () => {} })
   const db = drizzle(client, { schema: s })
@@ -91,6 +94,31 @@ async function main() {
       })
     }
     console.log(`[seed] ${data.services.length} services`)
+  } else if (syncServices) {
+    const cats = await db.insert(s.serviceCategory).values(data.serviceCategories).onConflictDoNothing().returning()
+    const allCats = cats.length === data.serviceCategories.length ? cats : await db.select().from(s.serviceCategory)
+    const catId = (slug: string) => allCats.find(c => c.slug === slug)?.id ?? null
+    const existing = await db.select({ id: s.service.id, slug: s.service.slug, coverImage: s.service.coverImage }).from(s.service)
+    const [last] = await db.select({ n: s.service.sortOrder }).from(s.service).orderBy(desc(s.service.sortOrder)).limit(1)
+    let order = last?.n ?? 0
+    for (const v of data.services) {
+      const row = existing.find(e => e.slug === v.slug)
+      if (!row) {
+        await db.insert(s.service).values({
+          slug: v.slug, title: v.title, summary: v.summary, overview: v.overview, icon: v.icon,
+          coverImage: v.cover, images: v.images, deliverables: v.deliverables, processSteps: v.processSteps,
+          tools: v.tools, showPricing: v.showPricing, startingPrice: v.startingPrice, packages: v.packages,
+          turnaround: v.turnaround, faqs: v.faqs, seoTitle: v.seoTitle, seoDescription: v.seoDescription,
+          status: 'published', featured: v.featured, sortOrder: ++order, categoryId: catId(v.category)
+        })
+        console.log(`[seed] added service ${v.slug}`)
+      } else if (!row.coverImage || row.coverImage.startsWith('/seed/')) {
+        await db.update(s.service)
+          .set({ coverImage: v.cover, images: v.images, showPricing: false, startingPrice: null, packages: [], featured: true })
+          .where(eq(s.service.id, row.id))
+        console.log(`[seed] refreshed service ${v.slug}`)
+      }
+    }
   }
 
   // ── Projects ─────────────────────────────────────────────────────
