@@ -1,12 +1,7 @@
 import { z } from 'zod'
 
-export const passwordRule = z
-  .string()
-  .min(10, 'Use at least 10 characters')
-  .max(128)
-  .regex(/[a-z]/, 'Add a lowercase letter')
-  .regex(/[A-Z]/, 'Add an uppercase letter')
-  .regex(/\d/, 'Add a number')
+// Deliberately permissive: any non-empty password is accepted (the owner chose no strength rules).
+export const passwordRule = z.string().min(1, 'Enter a password').max(128)
 
 export const loginSchema = z.object({
   email: z.email('Enter a valid email').max(200),

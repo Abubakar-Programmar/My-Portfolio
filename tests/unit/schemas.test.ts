@@ -22,9 +22,10 @@ describe('contactSchema', () => {
 })
 
 describe('auth schemas', () => {
-  it('enforces password strength', () => {
-    expect(passwordRule.safeParse('short1A').success).toBe(false)
-    expect(passwordRule.safeParse('alllowercase123').success).toBe(false)
+  it('accepts any non-empty password', () => {
+    expect(passwordRule.safeParse('').success).toBe(false)
+    expect(passwordRule.safeParse('00000000').success).toBe(true)
+    expect(passwordRule.safeParse('12345678').success).toBe(true)
     expect(passwordRule.safeParse('GoodPassword123').success).toBe(true)
   })
   it('requires login fields', () => expect(loginSchema.safeParse({ email: 'a@b.co', password: '' }).success).toBe(false))

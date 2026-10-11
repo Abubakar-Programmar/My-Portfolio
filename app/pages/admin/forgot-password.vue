@@ -154,7 +154,6 @@ function changeEmail() {
       <div>
         <label for="fp-pass" class="label">New password</label>
         <PasswordInput id="fp-pass" v-model="password" autocomplete="new-password" required autofocus />
-        <p class="hint">At least 10 characters with upper- and lowercase letters and a number.</p>
       </div>
       <div>
         <label for="fp-confirm" class="label">Confirm new password</label>
