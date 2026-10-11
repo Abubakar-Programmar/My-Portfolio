@@ -28,3 +28,6 @@ uploads
 test-results
 playwright-report
 *.tsbuildinfo
+
+# pnpm local store
+.pnpm-store
